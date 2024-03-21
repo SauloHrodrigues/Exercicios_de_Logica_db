@@ -44,6 +44,7 @@ public class Compra {
             i.getValorUnitario()+" | "+"Quantidade: "+i.getQuantidade()+" | "+"Total a pagar: "+i.getValorTotalItem());
             System.out.println("-----------------------------------------------------------------");
             subTotal += i.getValorTotalItem();
+            cont++;
         }
         finalizarCompra();
         System.out.println();
