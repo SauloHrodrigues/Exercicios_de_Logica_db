@@ -18,6 +18,7 @@ public class Pedido {
     public boolean adicionarItemNaLista(Produto produto, int quantidade){
         Item item = new Item(produto, quantidade);
         listaDeItens.add(item);
+        System.out.println("Item adicionado na lista");
         return true;
     }
 
@@ -28,18 +29,19 @@ public class Pedido {
             System.out.println("Produto:         "+listaDeItens.get(i).getProduto().getNome());
             System.out.println("Quantidade:      "+listaDeItens.get(i).getQuantidade());
             System.out.println("Preço unitário : "+listaDeItens.get(i).getProduto().getPreco());
-            System.out.println("Valor tota     : "+listaDeItens.get(i).getValorDoItem());
+            System.out.println("Valor total     : "+listaDeItens.get(i).getValorDoItem());
             System.out.println("----------------------------------------------");
         }
+        calcularValorTotal();
+        System.out.println("Valor total do pedido: "+valorTotalDoPedido);
     }
     public void imprimirValorTotal(){
         System.out.println("O valor do pedido é: "+valorTotalDoPedido);
     }
 
-    public void adicionarItem(){
-//        DUVIDA => qual é a função desse metodo, se eu já tenho adicionarItemNaLista?
-//        IMPLEMENTAR!!!
-//        TODO
+    public void adicionarItem(Item item){
+        listaDeItens.add(item);
+
     }
 
     public void receberNomeDoTeclado(){

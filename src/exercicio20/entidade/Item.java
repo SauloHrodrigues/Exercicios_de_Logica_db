@@ -27,11 +27,8 @@ public class Item {
     }
 
     public double getValorDoItem() {
+        defineValorTotal();
         return valorDoItem;
-    }
-
-    public void setValorDoItem(double valorDoItem) {
-        this.valorDoItem = valorDoItem;
     }
 
     public void defineValorTotal(){

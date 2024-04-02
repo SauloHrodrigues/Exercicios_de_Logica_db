@@ -7,9 +7,12 @@ public class Estoque {
     private int id = 1;
     private List<Produto> listProduto = new ArrayList<>();
 
-    public void inicializaEstoque(){
-
+    public Estoque() {
+        CarregaDadosEmEstoque carregaDadosEmEstoque = new CarregaDadosEmEstoque();
+        this.listProduto = carregaDadosEmEstoque.carregaEstoqueInicial();
     }
+
+
 
     public Produto encontraProduto(String nome){
         Produto produto = null;
