@@ -10,7 +10,7 @@ public class ContruirArvore {
         ArvoreGenealogica arvoreGenealogica = new ArvoreGenealogica(familia.getFamilia());
 
 //        arvoreGenealogica.mostrarArvoreDe("Carlos Alberto");
-        arvoreGenealogica.mostrarArvoreDe("Saulo");
+        arvoreGenealogica.mostrarArvoreDe("Suze");
 
     }
 }
