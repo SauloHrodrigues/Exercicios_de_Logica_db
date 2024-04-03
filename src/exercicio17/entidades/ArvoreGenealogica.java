@@ -7,36 +7,59 @@ import java.util.List;
 
 public class ArvoreGenealogica {
 
-
-    //   private Long id;
     private List<Pessoa> familia = new ArrayList<>();
 
-    public ArvoreGenealogica() {
+    public ArvoreGenealogica(List<Pessoa> familia) {
+        this.familia = familia;
     }
 
-    public void adicionarPessoa(Pessoa pessoa) {
-        familia.add(pessoa);
+    public void mostrarArvoreDe(String pessoa){
+        for (int i = 0; i < familia.size(); i++) {
+            if(familia.get(i).getNome().equalsIgnoreCase(pessoa)){
+                System.out.println(familia.get(i));
+               gerarAgregados(familia.get(i));
+                familia.get(i).mostrarAgregados();
+            }
+        }
     }
 
+    private void gerarAgregados(Pessoa pessoa){
+        System.out.println("Entrou no gerar");
+        for (int i = 0; i < familia.size(); i++) {
+            Pessoa pessoaNaLista = familia.get(i);
+//        imaos
+            if ((pessoaNaLista.getPai() == pessoa.getPai() || pessoaNaLista.getMae() == pessoa.getMae())
+                    && pessoaNaLista != pessoa){
+                Pessoa irmao = familia.get(i);
+                pessoa.adicionarAgregado("irmaos",irmao);
 
+            }
+//            avos
+            if (pessoa == pessoaNaLista){
+                pessoa.adicionarAgregado("Avo Materna",familia.get(i).getMae().getMae());
+                pessoa.adicionarAgregado("Avo Materna",familia.get(i).getMae().getPai());
+                pessoa.adicionarAgregado("Avo Paterno",familia.get(i).getPai().getMae());
+                pessoa.adicionarAgregado("Avo Paterno",familia.get(i).getPai().getPai());
+            }
+//        tios pai irmão da pessoa
+            if (pessoaNaLista != pessoa && pessoaNaLista.getPai() != null) {
 
-    public void gerarArvoreGenealogica(Pessoa pessoa){
-        for(int i=0; i< familia.size();i++){
-//            add irmao
-            if (familia.get(i).getNomePai().equalsIgnoreCase(pessoa.getNomePai())){
-               pessoa.adicionarAgregado("irmao",familia.get(i).getNome());
-                System.out.println("Entrou if !!!! "+ familia.get(i).getNome());
+                    System.out.println("entrou no if " + pessoaNaLista.getPai());
 
             }
 
-        }// fim for
+
+
+//        sobrinhos
+
+        }
+
+
     }
-
-
     @Override
     public String toString() {
         return "ArvoreGenealogica{" +
-                "familia=\n" + familia +
-                '}' + "\n";
+                "familia=" + familia +
+                '}';
     }
 }
